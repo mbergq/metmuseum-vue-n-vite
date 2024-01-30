@@ -15,4 +15,4 @@ const router = createRouter({
 })
 
 app.use(router)
-createApp(App).mount('#app')
+app.mount('#app')

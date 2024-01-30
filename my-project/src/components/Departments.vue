@@ -26,5 +26,6 @@ export default {
 
 
 <template>
-  <div v-for="name in data">{{ name.displayName }}</div>
+  <!-- <div v-for="name in data">{{ name.displayName }}</div> -->
+  <router-link v-for="name in data" to="/">{{ name.displayName }}</router-link>
 </template>

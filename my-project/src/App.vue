@@ -13,13 +13,23 @@ export default {
 </script>
 
 <template>
-  <HelloWorld msg="Hello World!" />
-  <CitiesList />
-  <Departments />
+  <!-- <HelloWorld msg="Hello World!" />
+  <CitiesList /> -->
+
+
+  <div id="flexBox">
+    <Departments />
+  </div>
 </template>
 
 <style>
 body {
   background-color: rgb(112, 127, 143);
+}
+
+#flexBox {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
 }
 </style>
