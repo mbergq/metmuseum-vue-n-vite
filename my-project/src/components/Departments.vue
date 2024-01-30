@@ -1,5 +1,5 @@
 <script>
-const arrayOfIds = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/841283'
+const departments = 'https://collectionapi.metmuseum.org/public/collection/v1/departments'
 
 import axios from "axios"
 export default {
@@ -16,9 +16,9 @@ export default {
   },
   methods: {
     async fetchData() {
-      const { data } = await axios.get(arrayOfIds);
-      this.data = data
-      this.img = data.primaryImageSmall
+      const { data } = await axios.get(departments);
+      this.data = data.departments
+      // this.data = data.departments[0].displayName
     }
   }
 }
@@ -26,5 +26,5 @@ export default {
 
 
 <template>
-  <img :src="this.img" alt="">
+  <div v-for="name in data">{{ name.displayName }}</div>
 </template>
