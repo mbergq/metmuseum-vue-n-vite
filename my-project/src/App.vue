@@ -17,3 +17,9 @@ export default {
   <CitiesList />
   <Departments />
 </template>
+
+<style>
+body {
+  background-color: rgb(112, 127, 143);
+}
+</style>
