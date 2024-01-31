@@ -2,12 +2,14 @@
 import CitiesList from './components/CitiesList.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Departments from './components/Departments.vue'
+import EgyptianArt from './components/EgyptianArt.vue'
 
 export default {
   components: {
     CitiesList,
     HelloWorld,
-    Departments
+    Departments,
+    EgyptianArt
   }
 }
 </script>
@@ -19,6 +21,7 @@ export default {
   <div id="flexBox">
     <Departments />
   </div>
+  <EgyptianArt />
 </template>
 
 <style>

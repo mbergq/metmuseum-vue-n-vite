@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Departments from './components/Departments.vue'
+import EgyptianArt from './components/EgyptianArt.vue'
 
 import App from './App.vue'
 
@@ -12,7 +13,10 @@ const router = createRouter({
   routes: [
     {
       component: Departments,
-      path: '/Home',
+      path: '/',
+
+      component: EgyptianArt,
+      path: '/'
     },
   ]
 })
