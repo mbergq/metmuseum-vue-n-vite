@@ -16,7 +16,6 @@ export default {
   <!-- <HelloWorld msg="Hello World!" />
   <CitiesList /> -->
 
-
   <div id="flexBox">
     <Departments />
   </div>
@@ -30,6 +29,9 @@ body {
 #flexBox {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+}
+
+#flexBox>a {
+  max-width: fit-content;
 }
 </style>
