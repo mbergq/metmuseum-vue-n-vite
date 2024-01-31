@@ -3,12 +3,12 @@ const url = 'https://collectionapi.metmuseum.org/public/collection/v1/search?has
 const uniqueUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
 
 
-import axios from "axios"
+import axios from 'axios'
 export default {
 
   created() {
     this.fetchData()
-    console.log(this.data)
+    // console.log(this.data)
   },
 
   data() {

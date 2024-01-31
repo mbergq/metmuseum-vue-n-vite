@@ -3,13 +3,15 @@ import CitiesList from './components/CitiesList.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Departments from './components/Departments.vue'
 import EgyptianArt from './components/EgyptianArt.vue'
+import UserSearch from './components/UserSearch.vue'
 
 export default {
   components: {
     CitiesList,
     HelloWorld,
     Departments,
-    EgyptianArt
+    EgyptianArt,
+    UserSearch
   }
 }
 </script>
@@ -22,6 +24,7 @@ export default {
     <Departments />
   </div>
   <EgyptianArt />
+  <UserSearch />
 </template>
 
 <style>
