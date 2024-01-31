@@ -38,10 +38,14 @@ export default {
     onClick: function () {
       this.fetchData()
     },
-    plus: function () {
+    next: function () {
       this.index++
       this.fetchData()
     },
+    previous: function () {
+      this.index--
+      this.fetchData()
+    }
 
 
   }
@@ -51,7 +55,8 @@ export default {
 
 <template>
   <input type="button" v-on:click="onClick" value="Go">
-  <input type="button" v-on:click="plus" value="Next">
+  <input type="button" v-on:click="previous" value="Previous">
+  <input type="button" v-on:click="next" value="Next">
 
   <div v-if="this.data === null">
     <p>Loading..</p>
