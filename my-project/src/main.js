@@ -13,13 +13,16 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      //Explanation: This path needs to be used in order to render this components data
-      //So a router link needs to use to="/'name'" to render this component
       path: '/',
       component: Home,
-
+    },
+    {
       path: '/departments',
       component: Departments,
+    },
+    {
+      path: '/egyptianart',
+      component: EgyptianArt,
     },
   ]
 })

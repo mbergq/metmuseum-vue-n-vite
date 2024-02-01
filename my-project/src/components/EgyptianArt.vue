@@ -66,5 +66,5 @@ export default {
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
 
-  <p>{{ }}</p>
+  <router-link to="/">Home</router-link>
 </template>

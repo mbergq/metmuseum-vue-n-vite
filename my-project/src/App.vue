@@ -25,7 +25,6 @@ export default {
   <!-- <CitiesList /> -->
   <!-- <router-link to="/departments">Departments</router-link> -->
   <!-- <router-view></router-view> -->
-  <Home />
   <router-view></router-view>
   <!-- <div id="flexBox">
     <Departments />
