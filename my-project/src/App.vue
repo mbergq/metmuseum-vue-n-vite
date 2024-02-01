@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Departments from './components/Departments.vue'
 import EgyptianArt from './components/EgyptianArt.vue'
 import UserSearch from './components/UserSearch.vue'
+import SearchLog from './components/SearchLog.vue'
 
 export default {
   components: {

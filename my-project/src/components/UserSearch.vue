@@ -7,11 +7,20 @@ export default {
 
   data() {
     return {
+
       data: null,
       keyWord: null,
       text: null,
+
+      o: {
+        keyWordLog: "",
+        numberOfPossibleIds: 0,
+      }
+
     }
   },
+
+  emits: ['send-log'],
 
   methods: {
 
@@ -36,6 +45,8 @@ export default {
     },
     onClick: function () {
       this.fetchData()
+
+      this.$emit('send-log', this.o)
     }
 
   }
