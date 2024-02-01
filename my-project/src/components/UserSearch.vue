@@ -2,55 +2,46 @@
 const urlPath = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 const uniqueUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
 import axios from 'axios'
+import SearchLog from './SearchLog.vue'
 
 export default {
-
   data() {
     return {
-
       data: null,
       keyWord: null,
       text: null,
-
-      o: {
-        keyWordLog: "",
-        numberOfPossibleIds: 0,
-      }
-
+      numberOfPossibleIds: null,
     }
   },
-
   emits: ['send-log'],
-
   methods: {
-
     async fetchData() {
-      const { data } = await axios.get(urlPath + this.keyWord)
-      console.log(data)
-      const userSearchPath = urlPath + this.keyWord
-      console.log(userSearchPath)
-      let objectID = data.objectIDs[0]
+      const { data } = await axios.get(urlPath + this.keyWord);
 
+      this.numberOfPossibleIds = data.objectIDs.length
+      let objectID = data.objectIDs[0];
       try {
-        const { data: info } = await axios.get(uniqueUrl + objectID)
-        this.data = info
-      } catch (error) {
-        console.error("Error:", error)
+        const { data: info } = await axios.get(uniqueUrl + objectID);
+        this.data = info;
       }
-
-    },
-
-    log: function () {
-      console.log(this.text)
+      catch (error) {
+        console.error("Error:", error);
+      }
     },
     onClick: function () {
       this.fetchData()
-
-      this.$emit('send-log', this.o)
+      this.emitSendLog()
+    },
+    emitSendLog() {
+      this.$emit('send-log', this.keyWord, this.numberOfPossibleIds)
+    },
+    onSendLog() {
+      this.keyWord = keyWord
+      this.numberOfPossibleIds = numberOfPossibleIds
+      //This function is not running atm
     }
-
-  }
-
+  },
+  components: { SearchLog }
 }
 
 </script>
@@ -69,5 +60,5 @@ export default {
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
 
-  <!-- <p>{{ this.data }}</p> -->
+  <SearchLog @send-log="onSendLog" :key-word-log="keyWord" :number-of-possible-ids="numberOfPossibleIds"></SearchLog>
 </template>

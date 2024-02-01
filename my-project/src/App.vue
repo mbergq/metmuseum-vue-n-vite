@@ -14,13 +14,17 @@ export default {
     Departments,
     EgyptianArt,
     UserSearch,
-    Home
-  }
+    Home,
+    SearchLog
+  },
+
 }
 </script>
 
 <template>
-  <router-view></router-view>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style>

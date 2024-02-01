@@ -11,11 +11,15 @@ export default {
     },
   },
 
-
 }
 
 </script>
 
 <template>
-  <p>{{ this.keyWordLog }}</p>
+  <div>
+
+    <p>{{ numberOfPossibleIds }}</p>
+    <p>{{ keyWordLog }}</p>
+
+  </div>
 </template>
