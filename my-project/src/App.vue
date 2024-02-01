@@ -19,18 +19,7 @@ export default {
 </script>
 
 <template>
-  <!-- <router-link to="/departments">Link to departments</router-link>
-  <router-view></router-view> -->
-  <!-- <HelloWorld msg="Hello World!" /> -->
-  <!-- <CitiesList /> -->
-  <!-- <router-link to="/departments">Departments</router-link> -->
-  <!-- <router-view></router-view> -->
   <router-view></router-view>
-  <!-- <div id="flexBox">
-    <Departments />
-  </div> -->
-  <!-- <EgyptianArt /> -->
-  <!-- <UserSearch /> -->
 </template>
 
 <style>

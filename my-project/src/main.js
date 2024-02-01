@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from './components/Home.vue'
 import Departments from './components/Departments.vue'
 import EgyptianArt from './components/EgyptianArt.vue'
+import UserSearch from './components/UserSearch.vue'
 
 import App from './App.vue'
 
@@ -23,6 +24,10 @@ const router = createRouter({
     {
       path: '/egyptianart',
       component: EgyptianArt,
+    },
+    {
+      path: '/usersearch',
+      component: UserSearch,
     },
   ]
 })

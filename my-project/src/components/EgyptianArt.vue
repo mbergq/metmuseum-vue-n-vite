@@ -54,6 +54,8 @@ export default {
 
 
 <template>
+  <router-link to="/">Home</router-link>
+
   <input type="button" v-on:click="onClick" value="Go">
   <input type="button" v-on:click="previous" value="Previous">
   <input type="button" v-on:click="next" value="Next">
@@ -65,6 +67,4 @@ export default {
   <div v-else>
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
-
-  <router-link to="/">Home</router-link>
 </template>

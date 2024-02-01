@@ -37,14 +37,6 @@ export default {
     onClick: function () {
       this.fetchData()
     }
-    // next: function () {
-    //   this.index++
-    //   this.fetchData()
-    // },
-    // previous: function () {
-    //   this.index--
-    //   this.fetchData()
-    // }
 
   }
 
@@ -53,6 +45,8 @@ export default {
 </script>
 
 <template>
+  <router-link to="/">Home</router-link>
+
   <input type="text" v-model="keyWord" value="Keyword..">
   <input type="button" v-on:click="onClick" value="Search">
 

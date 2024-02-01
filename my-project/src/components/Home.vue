@@ -8,6 +8,17 @@ export default {
 
 <template>
   <h2>Welcome! Use the links below to start using the functions</h2>
-  <router-link to="/departments">Departments</router-link>
-  <router-link to="/egyptianart">Egyptian Art</router-link>
+
+  <div id="style">
+    <router-link to="/departments">Departments</router-link>
+    <router-link to="/egyptianart">Egyptian Art</router-link>
+    <router-link to="/usersearch">Search function</router-link>
+  </div>
 </template>
+
+<style>
+#style>a {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+</style>
