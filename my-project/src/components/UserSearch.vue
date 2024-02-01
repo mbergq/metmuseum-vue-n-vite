@@ -21,12 +21,10 @@ export default {
       const userSearchPath = urlPath + this.keyWord
       console.log(userSearchPath)
       let objectID = data.objectIDs[0]
-      // console.log(data.objectIDs[this.index])
 
       try {
         const { data: info } = await axios.get(uniqueUrl + objectID)
         this.data = info
-        console.log(this.data.primaryImageSmall)
       } catch (error) {
         console.error("Error:", error)
       }

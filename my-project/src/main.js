@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Home from './components/Home.vue'
 import Departments from './components/Departments.vue'
 import EgyptianArt from './components/EgyptianArt.vue'
 
@@ -12,11 +13,13 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      component: Departments,
+      //Explanation: This path needs to be used in order to render this components data
+      //So a router link needs to use to="/'name'" to render this component
       path: '/',
+      component: Home,
 
-      component: EgyptianArt,
-      path: '/'
+      path: '/departments',
+      component: Departments,
     },
   ]
 })

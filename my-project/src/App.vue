@@ -1,4 +1,5 @@
 <script>
+import Home from './components/Home.vue'
 import CitiesList from './components/CitiesList.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Departments from './components/Departments.vue'
@@ -11,20 +12,26 @@ export default {
     HelloWorld,
     Departments,
     EgyptianArt,
-    UserSearch
+    UserSearch,
+    Home
   }
 }
 </script>
 
 <template>
-  <!-- <HelloWorld msg="Hello World!" />
-  <CitiesList /> -->
-
-  <div id="flexBox">
+  <!-- <router-link to="/departments">Link to departments</router-link>
+  <router-view></router-view> -->
+  <!-- <HelloWorld msg="Hello World!" /> -->
+  <!-- <CitiesList /> -->
+  <!-- <router-link to="/departments">Departments</router-link> -->
+  <!-- <router-view></router-view> -->
+  <Home />
+  <router-view></router-view>
+  <!-- <div id="flexBox">
     <Departments />
-  </div>
-  <EgyptianArt />
-  <UserSearch />
+  </div> -->
+  <!-- <EgyptianArt /> -->
+  <!-- <UserSearch /> -->
 </template>
 
 <style>
