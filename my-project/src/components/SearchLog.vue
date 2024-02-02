@@ -3,7 +3,7 @@
 export default {
 
   props: {
-    keyWordLog: {
+    keyWord: {
       type: String,
     },
     numberOfPossibleIds: {
@@ -19,7 +19,7 @@ export default {
   <div>
 
     <p>{{ numberOfPossibleIds }}</p>
-    <p>{{ keyWordLog }}</p>
+    <p>{{ keyWord }}</p>
 
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script>
 const urlPath = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 const uniqueUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
+const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/
 import axios from 'axios'
 import SearchLog from './SearchLog.vue'
 
@@ -11,6 +12,7 @@ export default {
       keyWord: null,
       text: null,
       numberOfPossibleIds: null,
+      warningMessage: null,
     }
   },
   emits: ['send-log'],
@@ -39,6 +41,23 @@ export default {
       this.keyWord = keyWord
       this.numberOfPossibleIds = numberOfPossibleIds
       //This function is not running atm
+    },
+  },
+  watch: {
+    keyWord() {
+      //If msg incluedes "weird stuff" send error here
+      if (regex.test(this.keyWord)) {
+        console.log("String contains special characters..")
+        this.warningMessage =
+          `Your keyword contains special characters, consider removing them
+        before searching..`
+      } else {
+        this.warningMessage = null
+      }
+      // if (this.keyWord === "Hej!") {
+      //   console.log("Invalid message")
+      // }
+      // console.log(`New text reads ${msg}`)
     }
   },
   components: { SearchLog }
@@ -51,8 +70,9 @@ export default {
 
   <input type="text" v-model="keyWord" value="Keyword..">
   <input type="button" v-on:click="onClick" value="Search">
-
+  <!-- Handle the error below better -->
   <div v-if="this.data === null">
+    <p>{{ this.warningMessage }}</p>
     <p>Loading...</p>
   </div>
 
@@ -60,5 +80,5 @@ export default {
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
 
-  <SearchLog @send-log="onSendLog" :key-word-log="keyWord" :number-of-possible-ids="numberOfPossibleIds"></SearchLog>
+  <SearchLog @send-log="onSendLog" :key-word="keyWord" :number-of-possible-ids="numberOfPossibleIds"></SearchLog>
 </template>
