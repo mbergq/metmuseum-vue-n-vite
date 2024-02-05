@@ -30,9 +30,9 @@ export default {
     <router-link to="/usersearch">Search function</router-link>
   </div>
 
-  <div>
+  <main>
     <router-view></router-view>
-  </div>
+  </main>
 </template>
 
 <style>

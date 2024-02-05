@@ -13,6 +13,7 @@ export default {
       text: null,
       numberOfPossibleIds: null,
       warningMessage: null,
+      showMessage: false,
     }
   },
   emits: ['send-log'],
@@ -33,6 +34,7 @@ export default {
     onClick: function () {
       this.fetchData()
       this.emitSendLog()
+      this.showMessage = true
     },
     emitSendLog() {
       this.$emit('send-log', this.keyWord, this.numberOfPossibleIds)
@@ -45,19 +47,27 @@ export default {
   },
   watch: {
     keyWord() {
-      //If msg incluedes "weird stuff" send error here
-      if (regex.test(this.keyWord)) {
-        console.log("String contains special characters..")
-        this.warningMessage =
-          `Your keyword contains special characters, consider removing them
+      //Hide the searchmessage and display warningmessage if the keyword
+      //contains special characters
+      this.showMessage = false
+
+      this.$nextTick(() => {
+        if (regex.test(this.keyWord)) {
+          this.warningMessage =
+            `Your keyword contains special characters, consider removing them
         before searching..`
-      } else {
-        this.warningMessage = null
-      }
-      // if (this.keyWord === "Hej!") {
-      //   console.log("Invalid message")
-      // }
-      // console.log(`New text reads ${msg}`)
+        } else {
+          this.warningMessage = null
+        }
+      })
+
+    },
+
+  },
+  computed: {
+    message() {
+      return "You've searched for " + this.keyWord + ", there are " + this.numberOfPossibleIds +
+        " objects to look at on this query"
     }
   },
   components: { SearchLog }
@@ -71,14 +81,14 @@ export default {
   <input type="text" v-model="keyWord" value="Keyword..">
   <input type="button" v-on:click="onClick" value="Search">
   <!-- Handle the error below better -->
-  <div v-if="this.data === null">
-    <p>{{ this.warningMessage }}</p>
-    <p>Loading...</p>
-  </div>
+  <p>{{ this.warningMessage }}</p>
 
-  <div v-else>
+
+  <div>
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
+
+  <p v-show="showMessage">{{ message }}</p>
 
   <SearchLog @send-log="onSendLog" :key-word="keyWord" :number-of-possible-ids="numberOfPossibleIds"></SearchLog>
 </template>
