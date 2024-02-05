@@ -18,7 +18,6 @@ export default {
   <div>
 
     <p>{{ numberOfPossibleIds }}</p>
-    <p>{{ keyWord }}</p>
 
   </div>
 </template>

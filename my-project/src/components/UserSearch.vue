@@ -83,10 +83,14 @@ export default {
   <!-- Handle the error below better -->
   <p>{{ this.warningMessage }}</p>
 
+  <div v-if="this.data === null">
 
-  <div>
+  </div>
+
+  <div v-else>
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
+
 
   <p v-show="showMessage">{{ message }}</p>
 
