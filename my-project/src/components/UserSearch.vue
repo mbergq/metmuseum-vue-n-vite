@@ -42,7 +42,6 @@ export default {
     onSendLog() {
       this.keyWord = keyWord
       this.numberOfPossibleIds = numberOfPossibleIds
-      //This function is not running atm
     },
   },
   watch: {
@@ -76,8 +75,6 @@ export default {
 </script>
 
 <template>
-  <router-link to="/">Home</router-link>
-
   <input type="text" v-model="keyWord" value="Keyword..">
   <input type="button" v-on:click="onClick" value="Search">
   <!-- Handle the error below better -->

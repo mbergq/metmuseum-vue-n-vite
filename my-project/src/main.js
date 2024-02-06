@@ -5,6 +5,7 @@ import Home from './components/Home.vue'
 import Departments from './components/Departments.vue'
 import EgyptianArt from './components/EgyptianArt.vue'
 import UserSearch from './components/UserSearch.vue'
+import Crocodile from './components/Crocodile.vue'
 
 import App from './App.vue'
 
@@ -28,6 +29,10 @@ const router = createRouter({
     {
       path: '/usersearch',
       component: UserSearch,
+    },
+    {
+      path: '/animal/:id',
+      component: Crocodile,
     },
   ]
 })
