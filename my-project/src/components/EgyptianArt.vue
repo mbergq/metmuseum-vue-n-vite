@@ -19,11 +19,13 @@ export default {
       data: null,
       image: null,
       index: 0,
+      numberOfObjects: null,
       o: {
         data: null,
         name: null,
         year: null,
-        department: null
+        department: null,
+        medium: null,
       }
     }
   },
@@ -33,14 +35,17 @@ export default {
     async fetchData() {
       const { data } = await axios.get(url)
 
-      console.log(data.objectIDs[this.index])
+      this.numberOfObjects = data.objectIDs.length
 
       try {
         const { data: info } = await axios.get(uniqueUrl + data.objectIDs[this.index])
         this.data = info
         // console.log(this.data.accessionYear)
         this.o.year = this.data.accessionYear
-        console.log(this.data.primaryImageSmall)
+        this.o.department = this.data.department
+        this.o.medium = this.data.medium
+        // // console.log(this.data.culture)
+        // // console.log(this.data.primaryImageSmall)
       } catch (error) {
         console.error("Error:", error)
       }
@@ -62,8 +67,15 @@ export default {
       this.fetchData()
       this.$emit('emit-data', this.o)
     },
+    random() {
+      this.index = Math.floor(Math.random() * this.numberOfObjects)
+      this.fetchData()
+      this.$emit('emit-data', this.o)
+    },
     onEmitData(o) {
       this.o.year = o.year
+      this.o.department = o.department
+      this.o.medium = o.medium
     }
 
   }
@@ -72,9 +84,10 @@ export default {
 
 
 <template>
-  <input type="button" v-on:click="onClick" value="Go">
-  <input type="button" v-on:click="previous" value="Previous">
-  <input type="button" v-on:click="next" value="Next">
+  <input type="button" @click="onClick" value="Go">
+  <input type="button" @click="previous" value="Previous">
+  <input type="button" @click="next" value="Next">
+  <input type="button" @click="random" value="Random">
 
   <div v-if="this.data === null">
     <p>Loading..</p>
@@ -84,5 +97,5 @@ export default {
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
 
-  <EgyptianArtData @emit-data="onEmitData" :year="o.year"></EgyptianArtData>
+  <EgyptianArtData @emit-data="onEmitData" :year="o.year" :department="o.department" :medium="o.medium"></EgyptianArtData>
 </template>

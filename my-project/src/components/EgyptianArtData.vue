@@ -5,12 +5,20 @@ export default {
     year: {
       type: String
     },
+    department: {
+      type: String
+    },
+    medium: {
+      type: String
+    }
   }
 }
 </script>
 <template>
   <div>
-    <p v-if="year === null">Null</p>
-    <p v-else>{{ year }}</p>
+
+    <p>{{ department }}</p>
+    <p>{{ year }}</p>
+    <p>{{ medium }}</p>
   </div>
 </template>
