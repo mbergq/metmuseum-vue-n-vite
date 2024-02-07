@@ -7,6 +7,7 @@ import EgyptianArt from './components/EgyptianArt.vue'
 import UserSearch from './components/UserSearch.vue'
 import SearchLog from './components/SearchLog.vue'
 import Animal from './components/Animal.vue'
+import EgyptianArtData from './components/EgyptianArtData.vue'
 
 export default {
   components: {
@@ -17,7 +18,8 @@ export default {
     UserSearch,
     Home,
     SearchLog,
-    Animal
+    Animal,
+    EgyptianArtData
   },
 
 }
