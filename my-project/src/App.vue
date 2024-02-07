@@ -6,7 +6,7 @@ import Departments from './components/Departments.vue'
 import EgyptianArt from './components/EgyptianArt.vue'
 import UserSearch from './components/UserSearch.vue'
 import SearchLog from './components/SearchLog.vue'
-import Crocodile from './components/Crocodile.vue'
+import Animal from './components/Animal.vue'
 
 export default {
   components: {
@@ -17,7 +17,7 @@ export default {
     UserSearch,
     Home,
     SearchLog,
-    Crocodile
+    Animal
   },
 
 }
@@ -32,8 +32,10 @@ export default {
     <router-link to="/usersearch">Search function</router-link>
   </div>
 
-  <div>
+  <div id="style">
     <router-link to="/animal/crocodile">Animal 1</router-link>
+    <router-link to="/animal/giraffe">Animal 2</router-link>
+    <router-link to="/animal/panther">Animal 3</router-link>
   </div>
 
   <main>
