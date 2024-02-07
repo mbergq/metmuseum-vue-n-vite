@@ -3,7 +3,6 @@ const urlPath = 'https://collectionapi.metmuseum.org/public/collection/v1/search
 const uniqueUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
 const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/
 import axios from 'axios'
-import SearchLog from './SearchLog.vue'
 
 export default {
   data() {
@@ -11,18 +10,18 @@ export default {
       data: null,
       keyWord: null,
       text: null,
-      numberOfPossibleIds: null,
+      numberOfObjects: null,
       warningMessage: null,
       showMessage: false,
+      index: 0,
     }
   },
-  emits: ['send-log'],
   methods: {
     async fetchData() {
       const { data } = await axios.get(urlPath + this.keyWord);
 
-      this.numberOfPossibleIds = data.objectIDs.length
-      let objectID = data.objectIDs[0];
+      this.numberOfObjects = data.objectIDs.length
+      let objectID = data.objectIDs[this.index];
       try {
         const { data: info } = await axios.get(uniqueUrl + objectID);
         this.data = info;
@@ -31,18 +30,24 @@ export default {
         console.error("Error:", error);
       }
     },
-    onClick: function () {
+
+    onClick() {
       this.fetchData()
-      this.emitSendLog()
       this.showMessage = true
     },
-    emitSendLog() {
-      this.$emit('send-log', this.keyWord, this.numberOfPossibleIds)
+    next() {
+      this.index++
+      this.fetchData()
     },
-    onSendLog() {
-      this.keyWord = keyWord
-      this.numberOfPossibleIds = numberOfPossibleIds
+    previous() {
+      this.index--
+      this.fetchData()
     },
+    random() {
+      this.index = Math.floor(Math.random() * this.numberOfObjects)
+      this.fetchData()
+    },
+
   },
   watch: {
     keyWord() {
@@ -65,11 +70,10 @@ export default {
   },
   computed: {
     message() {
-      return "You've searched for " + this.keyWord + ", there are " + this.numberOfPossibleIds +
+      return "You've searched for " + this.keyWord + ", there are " + this.numberOfObjects +
         " objects to look at on this query"
     }
   },
-  components: { SearchLog }
 }
 
 </script>
@@ -77,6 +81,9 @@ export default {
 <template>
   <input type="text" v-model="keyWord" value="Keyword..">
   <input type="button" v-on:click="onClick" value="Search">
+  <input type="button" @click="previous" value="Previous">
+  <input type="button" @click="next" value="Next">
+  <input type="button" @click="random" value="Random">
   <!-- Handle the error below better -->
   <p>{{ this.warningMessage }}</p>
 
@@ -88,8 +95,7 @@ export default {
     <img :src="this.data.primaryImageSmall" alt="Art">
   </div>
 
-
   <p v-show="showMessage">{{ message }}</p>
 
-  <SearchLog @send-log="onSendLog" :key-word="keyWord" :number-of-possible-ids="numberOfPossibleIds"></SearchLog>
+  <!-- <SearchLog @send-log="onSendLog" :key-word="keyWord" :number-of-possible-ids="numberOfObjects"></SearchLog> -->
 </template>

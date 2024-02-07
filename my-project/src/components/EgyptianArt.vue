@@ -40,12 +40,11 @@ export default {
       try {
         const { data: info } = await axios.get(uniqueUrl + data.objectIDs[this.index])
         this.data = info
-        // console.log(this.data.accessionYear)
         this.o.year = this.data.accessionYear
         this.o.department = this.data.department
         this.o.medium = this.data.medium
-        // // console.log(this.data.culture)
-        // // console.log(this.data.primaryImageSmall)
+        console.log(this.data)
+
       } catch (error) {
         console.error("Error:", error)
       }
