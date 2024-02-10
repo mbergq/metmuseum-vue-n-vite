@@ -5,6 +5,19 @@ const regex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\]/
 import axios from 'axios'
 
 export default {
+
+  computed: {
+    message() {
+      return "You've searched for " + this.keyWord + ", there are " + this.numberOfObjects +
+        " objects to look at on this query"
+    },
+    isDisabled() {
+      if (this.index === this.numberOfObjects - 1) {
+        return true
+      }
+    }
+  },
+
   data() {
     return {
       data: null,
@@ -16,6 +29,7 @@ export default {
       index: 0,
     }
   },
+
   methods: {
     async fetchData() {
       const { data } = await axios.get(urlPath + this.keyWord);
@@ -49,6 +63,7 @@ export default {
     },
 
   },
+
   watch: {
     keyWord() {
       //Hide the searchmessage and display warningmessage if the keyword
@@ -68,12 +83,7 @@ export default {
     },
 
   },
-  computed: {
-    message() {
-      return "You've searched for " + this.keyWord + ", there are " + this.numberOfObjects +
-        " objects to look at on this query"
-    }
-  },
+
 }
 
 </script>
@@ -81,14 +91,18 @@ export default {
 <template>
   <input type="text" v-model="keyWord" value="Keyword..">
   <input type="button" v-on:click="onClick" value="Search">
-  <input type="button" @click="previous" value="Previous">
-  <input type="button" @click="next" value="Next">
+  <input type="button" @click="previous" value="Previous" :disabled="this.index ? 0 : true">
+  <input type="button" @click="next" value="Next" :disabled="isDisabled">
   <input type="button" @click="random" value="Random">
   <!-- Handle the error below better -->
-  <p>{{ this.warningMessage }}</p>
+  <p style="color: #df0000;">{{ this.warningMessage }}</p>
 
   <div v-if="this.data === null">
 
+  </div>
+
+  <div v-else-if="this.data.primaryImageSmall === ''">
+    <p>No image available for this object..</p>
   </div>
 
   <div v-else>

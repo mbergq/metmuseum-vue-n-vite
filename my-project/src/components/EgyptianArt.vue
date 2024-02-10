@@ -16,7 +16,7 @@ export default {
 
   computed: {
     isDisabled() {
-      if (this.index === this.numberOfObjects) {
+      if (this.index === this.numberOfObjects - 1) {
         return true
       }
     }
@@ -37,7 +37,9 @@ export default {
       }
     }
   },
+
   emits: ['emit-data'],
+
   methods: {
 
     async fetchData() {
