@@ -14,6 +14,14 @@ export default {
     // console.log(this.data)
   },
 
+  computed: {
+    isDisabled() {
+      if (this.index === this.numberOfObjects) {
+        return true
+      }
+    }
+  },
+
   data() {
     return {
       data: null,
@@ -77,8 +85,8 @@ export default {
 
 
 <template>
-  <input type="button" @click="previous" value="Previous">
-  <input type="button" @click="next" value="Next">
+  <input type="button" @click="previous" value="Previous" :disabled="this.index ? 0 : true">
+  <input type="button" @click="next" value="Next" :disabled="isDisabled">
   <input type="button" @click="random" value="Random">
 
   <div v-if="this.data === null">
