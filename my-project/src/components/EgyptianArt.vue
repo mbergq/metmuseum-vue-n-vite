@@ -43,18 +43,12 @@ export default {
         this.o.year = this.data.accessionYear
         this.o.department = this.data.department
         this.o.medium = this.data.medium
-        console.log(this.data)
+        console.log(this.data.primaryImageSmall)
 
       } catch (error) {
         console.error("Error:", error)
       }
 
-    },
-
-    onClick() {
-      this.fetchData()
-      console.log(this.o.name)
-      this.$emit('emit-data', this.o)
     },
     next() {
       this.index++
@@ -83,13 +77,16 @@ export default {
 
 
 <template>
-  <input type="button" @click="onClick" value="Go">
   <input type="button" @click="previous" value="Previous">
   <input type="button" @click="next" value="Next">
   <input type="button" @click="random" value="Random">
 
   <div v-if="this.data === null">
     <p>Loading..</p>
+  </div>
+
+  <div v-else-if="this.data.primaryImageSmall === ''">
+    <p>No image available for this object..</p>
   </div>
 
   <div v-else>
