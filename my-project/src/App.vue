@@ -1,8 +1,8 @@
 <script>
-import Departments from './components/Departments.vue'
-import EgyptianArt from './components/EgyptianArt.vue'
-import UserSearch from './components/UserSearch.vue'
-import Animal from './components/Animal.vue'
+import Departments from './views/Departments.vue'
+import EgyptianArt from './views/EgyptianArt.vue'
+import UserSearch from './views/UserSearch.vue'
+import Animal from './views/Animal.vue'
 import EgyptianArtData from './components/EgyptianArtData.vue'
 
 export default {
@@ -21,9 +21,9 @@ export default {
   <h2>Welcome! Use the links below to start using the functions</h2>
 
   <div id="style">
-    <router-link to="/departments">Departments</router-link>
     <router-link to="/egyptianart">Egyptian Art</router-link>
     <router-link to="/usersearch">Search function</router-link>
+    <router-link to="/departments">Departments</router-link>
   </div>
 
   <div id="style">

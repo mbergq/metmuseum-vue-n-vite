@@ -1,10 +1,11 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Departments from './components/Departments.vue'
-import EgyptianArt from './components/EgyptianArt.vue'
-import UserSearch from './components/UserSearch.vue'
-import Animal from './components/Animal.vue'
+import Home from './views/Home.vue'
+import Departments from './views/Departments.vue'
+import EgyptianArt from './views/EgyptianArt.vue'
+import UserSearch from './views/UserSearch.vue'
+import Animal from './views/Animal.vue'
 
 import App from './App.vue'
 
@@ -13,6 +14,10 @@ const app = createApp(App)
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    {
+      path: '/',
+      component: Home,
+    },
     {
       path: '/departments',
       component: Departments,

@@ -3,7 +3,7 @@ const url = 'https://collectionapi.metmuseum.org/public/collection/v1/search?has
 const uniqueUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
 
 import axios from 'axios'
-import EgyptianArtData from './EgyptianArtData.vue'
+import EgyptianArtData from '../components/EgyptianArtData.vue'
 
 export default {
 
@@ -11,7 +11,6 @@ export default {
 
   created() {
     this.fetchData()
-    // console.log(this.data)
   },
 
   computed: {
@@ -53,7 +52,6 @@ export default {
         this.o.year = this.data.accessionYear
         this.o.department = this.data.department
         this.o.medium = this.data.medium
-        console.log(this.data.primaryImageSmall)
 
       } catch (error) {
         console.error("Error:", error)
