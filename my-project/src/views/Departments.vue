@@ -17,7 +17,6 @@ export default {
     async fetchData() {
       const { data } = await axios.get(departments);
       this.data = data.departments
-      // this.data = data.departments[0].displayName
     }
   }
 }
