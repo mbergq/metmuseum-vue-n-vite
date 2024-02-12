@@ -31,9 +31,9 @@ export default {
       o: {
         data: null,
         name: null,
-        year: null,
-        department: null,
-        medium: null,
+        year: '',
+        department: '',
+        medium: '',
       }
     }
   },

@@ -3,13 +3,16 @@
 export default {
   props: {
     year: {
-      type: String
+      type: String,
+      required: true
     },
     department: {
-      type: String
+      type: String,
+      required: true
     },
     medium: {
-      type: String
+      type: String,
+      required: true
     }
   }
 }
