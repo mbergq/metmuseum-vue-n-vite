@@ -94,7 +94,7 @@ export default {
   <input type="button" @click="previous" value="Previous" :disabled="this.index ? 0 : true">
   <input type="button" @click="next" value="Next" :disabled="isDisabled">
   <input type="button" @click="random" value="Random">
-  <!-- Handle the error below better -->
+
   <p style="color: #df0000;">{{ this.warningMessage }}</p>
 
   <div v-if="this.data === null">
@@ -110,6 +110,4 @@ export default {
   </div>
 
   <p v-show="showMessage">{{ message }}</p>
-
-  <!-- <SearchLog @send-log="onSendLog" :key-word="keyWord" :number-of-possible-ids="numberOfObjects"></SearchLog> -->
 </template>
